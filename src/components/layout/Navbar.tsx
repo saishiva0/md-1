@@ -7,11 +7,11 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Problem", href: "#problem" },
-  { label: "Solution", href: "#solution" },
-  { label: "Workflow", href: "#workflow" },
   { label: "Features", href: "#features" },
-  { label: "Impact", href: "#impact" },
+  { label: "Workflow", href: "#workflow" },
+  { label: "Techpacks", href: "#techpacks" },
+  { label: "Sourcing", href: "#sourcing" },
+  { label: "Services", href: "#services" },
 ];
 
 export default function Navbar() {
@@ -19,6 +19,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,11 +39,40 @@ export default function Navbar() {
 
       setLastScrollY(currentScrollY);
       setScrolled(currentScrollY > 20);
+
+      // Active section logic
+      const sections = navLinks.map(link => link.href.substring(1));
+      let current = "";
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            current = section;
+            break;
+          }
+        }
+      }
+      setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    // Call once to set initial active section
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+        setMobileOpen(false);
+      }
+    }
+  };
 
   return (
     <>
@@ -61,7 +91,7 @@ export default function Navbar() {
           <div className="flex items-center h-20 md:h-24">
             {/* Logo - Pushed Left */}
             <div className="flex-1 flex justify-start">
-              <a href="#" className="flex items-center gap-2" id="nav-logo">
+              <a href="#" onClick={(e) => handleSmoothScroll(e, "#hero")} className="flex items-center gap-2" id="nav-logo">
                 <Image
                   src="/logo4.png"
                   alt="Modozo"
@@ -75,16 +105,22 @@ export default function Navbar() {
 
             {/* Desktop Links - Truly Centered */}
             <div className="hidden lg:flex items-center justify-center gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="px-5 py-2 text-[15px] font-semibold text-slate-300 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/5"
-                  id={`nav-${link.label.toLowerCase()}`}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.substring(1);
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
+                    className={`px-5 py-2 text-[15px] font-semibold transition-all duration-200 rounded-lg hover:bg-white/5 ${
+                      isActive ? "text-teal-accent bg-white/5" : "text-slate-300 hover:text-white"
+                    }`}
+                    id={`nav-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
             </div>
 
             {/* Desktop CTA - Pushed Right */}
@@ -123,16 +159,21 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-deep-navy/95 backdrop-blur-xl pt-20"
           >
             <div className="flex flex-col items-center gap-4 p-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-lg text-slate-text hover:text-white transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.substring(1);
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
+                    className={`text-lg transition-colors ${
+                      isActive ? "text-teal-accent font-semibold" : "text-slate-text hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
               <div className="flex flex-col gap-3 w-full max-w-xs mt-4">
                 <Button
                   variant="secondary"
@@ -156,3 +197,4 @@ export default function Navbar() {
     </>
   );
 }
+

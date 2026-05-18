@@ -35,6 +35,7 @@ export default function Home() {
 
       {/* 5. Workflow Block B: Improve Quality (Dark) */}
       <WorkflowSplit
+        id="techpacks"
         reverse
         tag="AI-Powered Techpacks"
         theme="dark"
@@ -51,6 +52,7 @@ export default function Home() {
 
       {/* 6. Workflow Block C: Better Visibility (Dark) */}
       <WorkflowSplit
+        id="sourcing"
         tag="Global Supply Chain Visibility"
         theme="dark"
         // emoji="🔎"

@@ -34,7 +34,7 @@ export default function VIPServiceSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <SectionWrapper id="vip-service" className="bg-[#0B1120] py-12 md:py-16 border-t border-white/5">
+    <SectionWrapper id="services" className="bg-[#0B1120] py-12 md:py-16 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         {/* Header */}
         <div className="text-center space-y-3 mb-10">
