@@ -12,7 +12,7 @@ const services = [
     icon: Headphones,
     title: "Expert Design Guidance",
     desc: "Work closely with our fashion specialists to refine your collection with precision and trend-focused insights.",
-    visual: "/photo35.png"
+    visual: "/photo47.png"
   },
   {
     icon: DatabaseZap,
@@ -24,7 +24,7 @@ const services = [
     icon: Users,
     title: "Dedicated VIP Assistance",
     desc: "Receive personalized support and seamless communication throughout every stage of your fashion journey.",
-    visual: "/photo37.png"
+    visual: "/photo48.png"
   },
 ];
 
