@@ -73,6 +73,7 @@ export default function HeroSection() {
                   height={1800}
                   className="w-full h-auto max-h-[85vh] lg:max-h-[95vh] lg:scale-105 object-contain transition-transform duration-1000 group-hover:scale-[1.03]"
                   priority
+                  unoptimized
                 />
               </div>
             </div>
