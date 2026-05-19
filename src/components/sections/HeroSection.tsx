@@ -7,10 +7,9 @@ import { ArrowRight } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-deep-navy pt-20" id="hero">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#06101F] pt-20" id="hero">
       {/* Background Elements */}
       <div className="animated-grid opacity-40" />
-      <div className="glow-orb w-[600px] h-[600px] bg-rich-blue/15 -top-40 -right-40" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -65,37 +64,17 @@ export default function HeroSection() {
             className="relative lg:w-[130%] lg:translate-x-[-5%] xl:translate-x-[-8%] flex justify-center items-center h-full min-h-[600px]"
           >
             <div className="relative w-full group flex justify-center items-center">
-              {/* Multi-layered Atmospheric Depth */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-rich-blue/10 blur-[120px] rounded-full opacity-60 pointer-events-none" />
-              <div className="absolute top-1/4 right-1/4 w-[60%] h-[60%] bg-teal-accent/10 blur-[90px] rounded-full mix-blend-screen pointer-events-none animate-pulse-soft" />
-              <div className="absolute bottom-1/4 left-1/2 w-[40%] h-[40%] bg-[#FFD700]/5 blur-[100px] rounded-full mix-blend-overlay pointer-events-none" />
-
-              {/* Edge-Fading Mask Wrapper (Centered to reveal left/right cards) */}
-              <div
-                className="relative z-10 w-full flex justify-center items-center overflow-visible"
-                style={{
-                  maskImage: 'radial-gradient(ellipse at 50% 50%, black 65%, transparent 98%)',
-                  WebkitMaskImage: 'radial-gradient(ellipse at 50% 50%, black 65%, transparent 98%)',
-                }}
-              >
+              {/* Seamlessly Integrated Visual */}
+              <div className="relative z-10 w-full flex justify-center items-center overflow-visible">
                 <Image
-                  src="/photo40.png"
+                  src="/photo50.png"
                   alt="Modozo Immersive Fashion Tech Interface"
                   width={1800}
                   height={1800}
-                  className="w-full h-auto rounded-[2rem] max-h-[85vh] lg:max-h-[95vh] lg:scale-105 object-contain brightness-[1.15] contrast-[1.12] saturate-[1.10] drop-shadow-[0_0_120px_rgba(59,130,246,0.3)] drop-shadow-[0_0_40px_rgba(15,98,254,0.2)] transition-transform duration-1000 group-hover:scale-[1.03]"
+                  className="w-full h-auto max-h-[85vh] lg:max-h-[95vh] lg:scale-105 object-contain transition-transform duration-1000 group-hover:scale-[1.03]"
                   priority
                 />
               </div>
-
-              {/* Cinematic Vignette Overlay */}
-              <div
-                className="absolute inset-0 z-20 pointer-events-none"
-                style={{
-                  background: 'radial-gradient(ellipse at 50% 50%, transparent 55%, var(--deep-navy) 100%)',
-                  opacity: 0.7
-                }}
-              />
             </div>
           </motion.div>
         </div>
